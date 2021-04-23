@@ -1,0 +1,25 @@
+body {
+    background-color: black;
+    color: slategrey;
+}
+section {
+    color: coral;
+}
+
+/*----- Sección Películas -----*/
+.seccion-peliculas {
+    color: blue;
+}
+.titulo-peliculas {
+    color: chartreuse;
+}
+
+/*------ Sección Tabla -------*/
+.seccion-tabla {
+    color: indigo;
+}
+.tabla {
+    width: 300px;
+    margin: auto;
+    border-color: red;
+}
