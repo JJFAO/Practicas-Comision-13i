@@ -1,25 +1,22 @@
 body {
-    background-color: black;
-    color: slategrey;
-}
-section {
-    color: coral;
+    background-color: aliceblue;
 }
 
 /*----- Sección Películas -----*/
 .seccion-peliculas {
-    color: blue;
+    color: slategrey;
 }
 .titulo-peliculas {
-    color: chartreuse;
+    color: rgb(93, 106, 119);
 }
 
 /*------ Sección Tabla -------*/
-.seccion-tabla {
+.texto-indigo {
     color: indigo;
 }
 .tabla {
     width: 300px;
     margin: auto;
-    border-color: red;
+    border-color: darkslateblue;
+    background-color: #a680f33f;
 }
