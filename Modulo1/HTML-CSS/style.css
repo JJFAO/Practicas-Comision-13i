@@ -1,0 +1,75 @@
+/* * {
+    margin: 0;
+} */
+
+body {
+    background-color: aliceblue;
+    font-family: "Nerko One", cursive;
+    margin: 0;
+}
+section {
+    margin: 3rem;
+}
+ul {
+    margin: 0;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+/* Sección Navbar */
+.navbar {
+    background-color: blue;
+}
+.navbar li {
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+/*----- Sección Películas -----*/
+.seccion-peliculas {
+    color: slategrey;
+}
+.seccion-peliculas p {
+    text-align: justify;
+}
+.titulo-peliculas {
+    color: rgb(93, 106, 119);
+}
+
+/*------ Sección Tabla -------*/
+.texto-indigo {
+    color: indigo;
+}
+.tabla {
+    width: 300px;
+    margin: auto;
+    border-color: darkslateblue;
+    background-color: #a680f33f;
+}
+
+/* ---- Sección Recaudación */
+.caja {
+    width: 250px;
+    background-color: #cfba5d79;
+    padding: 10px;
+    border-width: 3px;
+    border-style: dotted;
+    border-color: blueviolet;
+    border-radius: 10px;
+    /* border: 3px dotted blueviolet; */
+    margin: 50px;
+    /* margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 30px;
+    margin-left: 30px; */
+}
+
+/* ---- Sección Contacto */
+.contacto {
+    width: 300px;
+    padding: 1rem;
+    border: 2px dotted brown;
+    margin-bottom: 3rem;
+}

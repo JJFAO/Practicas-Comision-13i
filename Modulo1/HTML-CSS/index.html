@@ -7,22 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&family=Yellowtail&display=swap" rel="stylesheet">
     <title>Marvel</title>
 </head>
 
 <body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="https://www.universomarvel.com/" target="_blank">Universo Marvel</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+    </nav>
     <!-- Encabezado -->
     <header>
         <!-- H1 es la etiqueta para el título principal del pagina -->
-        <h1>Wikipedia</h1>
+        <h1>Marvel</h1>
         <!-- El atributo "width" modifica el ancho de la imagen, por defecto el valor es en pixels -->
-        <img width="200px"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/1200px-Marvel_Logo.svg.png">
+        <img width="200px" src="./images/Marvel_Logo.svg.png">
     </header>
     <main>
         <!-- Sección de descripción -->
         <section class="seccion-peliculas">
-            <h3 class="titulo-peliculas"> Películas del Universo cinematográfico de Marvel </h3>
+            <h3 class="titulo-peliculas">Películas del Universo cinematográfico de Marvel </h3>
             <p> Las películas del Universo cinematográfico de Marvel —en inglés, <b>Marvel Cinematic Universe</b>,
                 normalmente abreviado MCU— son una serie de películas de superhéroes estadounidenses, basadas en
                 personajes que aparecen en publicaciones de Marvel Comics. Las cintas han estado en producción desde
@@ -35,7 +44,7 @@
         </section>
         <hr>
         <!-- Sección de Tabla -->
-        <section class="texto-indigo">
+        <section class="texto-indigo titulo-peliculas">
             <h3>Películas fase 1</h3>
             <table border="2" class="tabla">
                 <tr>
@@ -60,18 +69,39 @@
                 </tr>
             </table>
         </section>
-
         <!-- Sección Recaudación -->
         <section>
             <h3>Las Películas con más recaudación</h3>
-            <ol class="texto-indigo">
-                <li>The Incredible Hulk</li>
-                <li>Iron Man</li>
-                <li>AVENGERS: ENDGAME</li>
-                <li>AVENGERS: ENDGAME</li>
-            </ol>
+            <div class="caja">
+                <ol class="texto-indigo">
+                    <li>The Incredible Hulk</li>
+                    <li>Iron Man</li>
+                    <li>AVENGERS: ENDGAME</li>
+                    <li>AVENGERS: ENDGAME</li>
+                </ol>
+            </div>
         </section>
-
+        <!-- Sección Contacto -->
+        <section id="contact">
+            <h3>Contacto</h3>
+            <form class="contacto">
+                <div>
+                    <label>Nombre</label><br>
+                    <input type="text" required>
+                </div>
+                <div>
+                    <label>Email</label><br>
+                    <input type="email" required>
+                </div>
+                <div>
+                    <label>Mensaje</label><br>
+                    <textarea minlength="5"></textarea>
+                </div>
+                <div>
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+        </section>
     </main>
     <footer></footer>
 </body>
