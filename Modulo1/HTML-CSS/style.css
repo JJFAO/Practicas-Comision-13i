@@ -17,15 +17,42 @@ ul {
 h3 {
     font-size: 24px;
 }
-
+a {
+    text-decoration: none;
+}
+.text-center {
+    text-align: center;
+}
 /* Sección Navbar */
 .navbar {
-    background-color: blue;
+    background-color: #3f51b5;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+}
+.ul-nav {
+    display: inline-block;
+    vertical-align: middle;
 }
 .navbar li {
     display: inline-block;
     margin: 0 1rem;
+    font-size: 24px;
 }
+.navbar a:link {
+    color: #c5b0d8;
+}
+.navbar a:visited {
+    color: #af8ccf;
+}
+.navbar a:hover {
+    color:bisque;
+}
+.logo {
+    width: 50px;
+    vertical-align: middle;
+}
+
 
 /*----- Sección Películas -----*/
 .seccion-peliculas {
