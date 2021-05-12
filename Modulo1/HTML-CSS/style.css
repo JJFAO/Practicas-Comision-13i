@@ -26,9 +26,24 @@ a {
 /* Sección Navbar */
 .navbar {
     background-color: #3f51b5;
+    background: linear-gradient(
+        270deg,
+        rgba(247, 66, 69, 1) 0%,
+        rgba(208, 51, 71, 1) 11%,
+        rgba(178, 63, 94, 1) 20%,
+        rgb(132 38 115) 47%,
+        rgba(25, 54, 152, 1) 100%
+    );
     padding: 10px 0;
     position: sticky;
     top: 0;
+}
+.giro {
+    transition-duration: 0.7s;
+}
+.giro:hover {
+    transform: scale(1.2) rotate3d(0.8, 1, 0, 360deg);
+    transition-timing-function: ease-in-out;
 }
 .ul-nav {
     display: inline-block;
@@ -46,13 +61,12 @@ a {
     color: #af8ccf;
 }
 .navbar a:hover {
-    color:bisque;
+    color: bisque;
 }
 .logo {
     width: 50px;
     vertical-align: middle;
 }
-
 
 /*----- Sección Películas -----*/
 .seccion-peliculas {
@@ -70,10 +84,21 @@ a {
     color: indigo;
 }
 .tabla {
+    border-color: darkslateblue;
+    background-color: #c3acf27d;
+}
+.relative {
+    position: relative;
     width: 300px;
     margin: auto;
-    border-color: darkslateblue;
-    background-color: #a680f33f;
+}
+.texto-fondo {
+    color: #e60404e3;
+    position: absolute;
+    left: 25%;
+    top: 40%;
+    z-index: -1;
+    transform: rotateZ(-24deg);
 }
 
 /* ---- Sección Recaudación */
@@ -99,4 +124,8 @@ a {
     padding: 1rem;
     border: 2px dotted brown;
     margin-bottom: 3rem;
+}
+
+.magictime.foolishIn {
+    animation-duration: 2.5s;
 }
