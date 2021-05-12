@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    color: azure;
+    background-color: rgb(96, 47, 141);
+}
+a {
+    text-decoration: none;
+}
+.logo {
+    width: 50px;
+}
+.navbar {
+    background-color: rgb(44, 44, 44);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar a {
+    color: antiquewhite;
+    padding: 10px;
+}
+.navbar a:hover {
+    background-color: aliceblue;
+    color: rgb(29, 28, 28);
+}
+
+/* Sección Cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem;
+    width: 230px;
+    background-color: rgb(22, 19, 19);
+}
+.card img {
+    height: 100%;
+}
+.card-img {
+    height: 100px;
+    text-align: center;
+}
+/* Sección formulario */
+.formulario {
+    max-width: 600px;
+    margin: 5rem auto;
+    background-color: rgb(22, 19, 19);
+    padding: 2rem;
+}
+.formulario input,
+.formulario textarea {
+    background-color: rgb(22, 19, 19);
+    border: none;
+    border-bottom: 2px aliceblue solid;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+}
+.flex-nombres {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 625px) {
+    .flex-nombres div {
+        width: 100%;
+    }
+}
+
+.centrar-flex {
+    display: flex;
+    justify-content: center;
+}
