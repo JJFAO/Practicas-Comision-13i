@@ -1,0 +1,70 @@
+.colores {
+    margin: 5rem auto;
+    max-width: 600px;
+    display: block;
+    padding: 3rem;
+    background-color: rgb(36, 35, 35);
+}
+@media screen and (min-width: 630px) {
+    .display-630-flex {
+        display: flex;
+    }
+}
+.lado-izquierdo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+    width: 200px;
+    min-width: 200px;
+    background-position: center;
+    background-size: cover;
+    background-image: url(https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80);
+}
+.lado-izquierdo h3 {
+    text-shadow: 0 0 5px #000, 0 0 10px #000, 0 0 15px #000, 0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18,
+        0 0 55px #49ff18, 0 0 75px #49ff18;
+}
+.lado-derecho {
+    padding: 0 3rem;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-content: space-around;
+}
+
+.lado-derecho > div {
+    width: 50px;
+    height: 50px;
+    margin: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition-timing-function: ease-out;
+    transition-duration: 0.4s;
+}
+.lado-derecho > div:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.616));
+    opacity: 0.86;
+}
+#blue {
+    background-color: blue;
+}
+#purple {
+    background-color: purple;
+}
+#orange {
+    background-color: orange;
+}
+#green {
+    background-color: green;
+}
+#red {
+    background-color: red;
+}
+#white {
+    background-color: white;
+}
+#pink {
+    background-color: pink;
+}

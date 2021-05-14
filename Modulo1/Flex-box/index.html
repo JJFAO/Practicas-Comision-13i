@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="colores.css">
     <title>FlexBox</title>
 </head>
 <body>
@@ -92,6 +93,32 @@
                 </div>
             </form>
         </section>
+        <!-- Sección Colores -->
+        <section class="colores display-630-flex">
+            <div class="lado-izquierdo">
+                <h3>Elegí tu color</h3>
+            </div>
+            <div class="lado-derecho display-630-flex" onclick="changeTheme(event)">
+                <div id="blue"></div>
+                <div id="purple"></div>
+                <div id="orange"></div>
+                <div id="green"></div>
+                <div id="red"></div>
+                <div id="white"></div>
+                <div id="pink"></div>
+                <div id="pink"></div>
+            </div>
+        </section>
     </main>
+    <footer class="footer">
+        Footer
+    </footer>
+    <script>
+        function changeTheme(event) {
+            const color = event.target.id;
+            document.body.style.backgroundColor = color;
+            // console.log(color);
+        }
+    </script>
 </body>
 </html>

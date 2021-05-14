@@ -1,8 +1,12 @@
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
     font-family: sans-serif;
     color: azure;
     background-color: rgb(96, 47, 141);
+    transition: background-color ease-out 1s;
 }
 a {
     text-decoration: none;
@@ -57,6 +61,7 @@ a {
 .formulario textarea {
     background-color: rgb(22, 19, 19);
     border: none;
+    color: #c6e1f9;
     border-bottom: 2px aliceblue solid;
     font-size: 1.1rem;
     margin-bottom: 2.5rem;
@@ -77,4 +82,11 @@ a {
 .centrar-flex {
     display: flex;
     justify-content: center;
+}
+
+/* Sección footer */
+footer {
+    background-color: chocolate;
+    height: 100px;
+    margin-top: auto;
 }
