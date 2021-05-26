@@ -1,18 +1,80 @@
+/* ---- Sección Heroes */
+.play .zarabararabaram {
+    animation: zarabararabaram 1.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
 .cards-heroes .card {
     max-width: 300px;
 }
+
+/* ---- Sección Villanos */
 .villanos .card {
     margin-bottom: 3rem;
 }
+
+/* ---- Footer */
 .footer {
+    color: bisque;
     background-color: rgb(36, 9, 119);
-    background-image: radial-gradient(circle at top right, rgb(36, 9, 119) 0%, rgb(36, 9, 119) 48%,rgb(72, 7, 149) 48%, rgb(72, 7, 149) 53%,rgb(109, 5, 178) 53%, rgb(109, 5, 178) 56%,rgb(145, 2, 208) 56%, rgb(145, 2, 208) 69%,rgb(181, 0, 237) 69%, rgb(181, 0, 237) 100%);
+    background-image: radial-gradient(
+        circle at top right,
+        rgb(36, 9, 119) 0%,
+        rgb(36, 9, 119) 48%,
+        rgb(72, 7, 149) 48%,
+        rgb(72, 7, 149) 53%,
+        rgb(109, 5, 178) 53%,
+        rgb(109, 5, 178) 56%,
+        rgb(145, 2, 208) 56%,
+        rgb(145, 2, 208) 69%,
+        rgb(181, 0, 237) 69%,
+        rgb(181, 0, 237) 100%
+    );
 }
 .social-icon {
     font-size: 3rem;
     margin: 0 10px;
-    color: bisque;
+    color: antiquewhite;
 }
 .links {
     list-style: none;
+}
+.links a {
+    color: bisque;
+}
+
+.batman-spin {
+    display: inline-flex;
+    transform: translateX(-500px);
+}
+.play.batman-spin {
+    transform: translateX(0);
+    transition-duration: 1.01s;
+}
+.play .spin {
+    animation: spin 0.9s linear forwards;
+}
+
+/* ---- Keyframes */
+@keyframes spin {
+    0% {
+        transform: scale(0) rotateZ(0);
+    }
+    90% {
+        transform: scale(1) rotateZ(4010deg);
+    }
+    100% {
+        transform: scale(1) rotateZ(3980deg);
+    }
+}
+
+@keyframes zarabararabaram {
+    0% {
+        transform: scale(0) rotateZ(0);
+    }
+
+    70% {
+        transform: scale(1.5) rotateZ(500deg);
+    }
+    100% {
+        transform: scale(1) rotateZ(720deg);
+    }
 }
