@@ -1,6 +1,6 @@
 /* ---- Sección Heroes */
 .play .zarabararabaram {
-    animation: zarabararabaram 1.7s cubic-bezier(0.77, 0, 0.175, 1);
+    animation: zarabararabaram 1.6s cubic-bezier(0.77, 0, 0.7, 1);
 }
 .cards-heroes .card {
     max-width: 300px;
@@ -33,6 +33,12 @@
     font-size: 3rem;
     margin: 0 10px;
     color: antiquewhite;
+    transition-duration: 0.5s;
+    text-shadow: -3px 3px 5px rgba(58, 57, 57, 0.575), -3px 4px 7px rgba(112, 112, 112, 0.493);
+}
+.social-icon:hover {
+    color: rgb(255, 221, 180);
+    text-shadow: 4px 3px 2px rgba(58, 57, 57, 0.575), 4px 4px 5px rgba(112, 112, 112, 0.493);
 }
 .links {
     list-style: none;
