@@ -6,37 +6,214 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./bootstrap-5.0.1-dist/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/3/3d/DC_Comics_logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./batman.css">
+    <link rel="shortcut icon" href="https://www.seekpng.com/png/full/540-5404465_batman-icon-png-batman-logo.png"
+        type="image/x-icon">
     <title>Batman</title>
 </head>
 
 <body>
-
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="https://www.dccomics.com/sites/default/files/Char_Gallery_Batman_DTC1018_6053f2162bdf03.97426416.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="https://www.dccomics.com/sites/default/files/Movies-Gallery_JusticeLeague2017_BM_59f8bd4ac1e9e5.69884061.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="https://www.dccomics.com/sites/default/files/GalleryChar_1920x1080_BM_Cv38_54b5d0d1ada864.04916624.jpg" class="d-block w-100" alt="...">
-          </div>
+    <!-- Sección Carrusel -->
+    <header>
+        <div id="carouselExampleControls" class="carousel slide w-50 mx-auto" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://www.dccomics.com/sites/default/files/Char_Gallery_Batman_DTC1018_6053f2162bdf03.97426416.jpg"
+                        class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.dccomics.com/sites/default/files/Movies-Gallery_JusticeLeague2017_BM_59f8bd4ac1e9e5.69884061.jpg"
+                        class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.dccomics.com/sites/default/files/GalleryChar_1920x1080_BM_Cv38_54b5d0d1ada864.04916624.jpg"
+                        class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-
+    </header>
+    <!-- Sección Información de batman -->
+    <main class="container">
+        <section class="my-5">
+            <h2 class="text-white">Batman</h2>
+            <div class="shadow-lg">
+                <div class="bg-secondary text-white p-4 rounded-top">
+                    <p> En nombre de sus padres asesinados, Bruce Wayne libra una guerra eterna contra los criminales de
+                        Gotham City. Él es la venganza. Él es la noche. Él es Batman. Uno de los personajes de ficción
+                        más emblemáticos del mundo, Batman ha dedicado su vida a una cruzada sin fin, una guerra contra
+                        todos los criminales en nombre de sus padres asesinados, que le fueron arrebatados cuando era
+                        sólo un niño. Desde aquella trágica noche, ha entrenado su cuerpo y su mente hasta casi la
+                        perfección física para ser un super héroe hecho a sí mismo. Ha desarrollado un arsenal de
+                        tecnología que avergonzaría a la mayoría de los ejércitos. Y ha reunido equipos de sus
+                        compañeros superhéroes de DC, como la Liga de la Justicia, los Outsiders y Batman, Incorporated.
+                        Multimillonario y vividor de día, la doble vida de Bruce Wayne le proporciona la comodidad de
+                        una vida sin preocupaciones financieras, un mayordomo leal convertido en guardián y la base de
+                        operaciones perfecta en la antigua red de cuevas bajo la extensa finca de su familia. Por la
+                        noche, sin embargo, se despoja de toda pretensión, se pone su iconic capa festoneada y su
+                        capucha puntiaguda y se lanza a las sombrías calles, cielos y tejados de Gotham City. </p>
+                </div>
+                <div class="accordion accordion-flush" id="accordionExample">
+                    <div class="accordion-item bg-dark text-white">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Creación
+                                y Publicación </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the first item's accordion body.</strong> It is shown by default, until
+                                the collapse plugin adds the appropriate classes that we use to style each element.
+                                These classes control the overall appearance, as well as the showing and hiding via CSS
+                                transitions. You can modify any of this with custom CSS or overriding our default
+                                variables. It's also worth noting that just about any HTML can go within the
+                                <code>.accordion-body</code>, though the transition does limit overflow.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-dark text-white">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Biografía del personaje y cronología </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the second item's accordion body.</strong> It is hidden by default,
+                                until the collapse plugin adds the appropriate classes that we use to style each
+                                element. These classes control the overall appearance, as well as the showing and hiding
+                                via CSS transitions. You can modify any of this with custom CSS or overriding our
+                                default variables. It's also worth noting that just about any HTML can go within the
+                                <code>.accordion-body</code>, though the transition does limit overflow.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-dark text-white">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Identidad secreta </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until
+                                the collapse plugin adds the appropriate classes that we use to style each element.
+                                These classes control the overall appearance, as well as the showing and hiding via CSS
+                                transitions. You can modify any of this with custom CSS or overriding our default
+                                variables. It's also worth noting that just about any HTML can go within the
+                                <code>.accordion-body</code>, though the transition does limit overflow.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-dark text-white">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Identidad secreta </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until
+                                the collapse plugin adds the appropriate classes that we use to style each element.
+                                These classes control the overall appearance, as well as the showing and hiding via CSS
+                                transitions. You can modify any of this with custom CSS or overriding our default
+                                variables. It's also worth noting that just about any HTML can go within the
+                                <code>.accordion-body</code>, though the transition does limit overflow.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Sección enemigos -->
+        <section class="my-5">
+            <h2 class="text-center text-white">Enemigos de Batman</h2>
+            <div class="d-flex justify-content-between flex-wrap">
+                <figure class="figure">
+                    <div class="contenedor-imagen rounded d-flex justify-content-end">
+                        <img src="https://www.dccomics.com/sites/default/files/styles/comics320x485/public/Char_Thumb_Joker_5c4a42b7ef2011.52750480.jpg?itok=QU3wfuqI"
+                            class="h-100 " alt="...">
+                    </div>
+                    <figcaption class="text-white">The Joker.</figcaption>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jokerModal">
+                        Launch demo modal </button>
+                </figure>
+                <figure class="figure">
+                    <div class="contenedor-imagen rounded d-flex justify-content-end">
+                        <img src="https://www.dccomics.com/sites/default/files/styles/comics320x485/public/Char_Thumb_TwoFace_5c5a399af0f557.68468222.jpg?itok=sGRZ03X4"
+                            class="h-100 " alt="...">
+                    </div>
+                    <figcaption class="text-white">Two Face.</figcaption>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#twoFaceModal">
+                        Launch demo modal </button>
+                </figure>
+                <figure class="figure">
+                    <div class="contenedor-imagen rounded d-flex justify-content-end">
+                        <img src="https://www.accioncine.es/media/k2/items/cache/cbcaee40e229bf61b0a8685655293b0f_XL.jpg"
+                            class="h-100 " alt="...">
+                    </div>
+                    <figcaption class="text-white">Riddler.</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+    <!-- Modal -->
+    <div class="modal fade" id="jokerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Joker</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"> ... </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="twoFaceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Two Face</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"> ... </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="./bootstrap-5.0.1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
