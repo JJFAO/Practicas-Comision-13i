@@ -131,11 +131,11 @@ function ejercicio3() {
 
 
 // ----- Bucle para repetir 10 veces una secuencia, con for ()
-const repeticiones = 10;
+// const repeticiones = 10;
 
-for (let indice = 0; indice < repeticiones; indice++) {
-    console.log(indice);
-}
+// for (let indice = 0; indice < repeticiones; indice++) {
+//     console.log(indice);
+// }
 
 
 // ----- Bucle para repetir 10 veces una secuencia, con for (), de forma descendente
@@ -144,3 +144,44 @@ for (let indice = 0; indice < repeticiones; indice++) {
 // for (let indice = 9; indice >= repeticiones; indice--) {
 //     console.log(indice);
 // }
+
+
+// -------> Ejemplo de String con template literal o string template
+// var apellido = 'Moreno'
+// var nombre = 'Rick ' + apellido + '.'
+// var nombre = `Rick ${apellido}.`
+
+
+
+function ejercicioEnClase() {
+    const repeticiones = 2;
+    let contadorNegativos = 0;
+    let contadorPositivos = 0;
+    let contadorMultiplos15 = 0;
+    let sumadorPares = 0;
+
+    for (let indice = 0; indice < repeticiones; indice++) {
+        const numeroIngresado = prompt('ingrese un número')
+        const esNegativo = numeroIngresado < 0;
+        const esPositivo = numeroIngresado > 0;
+
+        if (esNegativo) {
+            contadorNegativos = contadorNegativos + 1;
+        } else if (esPositivo) {
+            contadorPositivos += 1;
+        }
+        const esMultiplo15 = esPositivo && numeroIngresado % 15 === 0;
+        if (esMultiplo15) {
+            contadorMultiplos15 += 1;
+        }
+        const esPar = numeroIngresado % 2 === 0;
+        if (esPar) {
+            sumadorPares += parseInt(numeroIngresado);
+        }
+    }
+
+    console.log('La cantidad de negativos es: ', contadorNegativos);
+    console.log('La cantidad de positivos es: ', contadorPositivos);
+    console.log('La cantidad de multiplos de 15 es: ', contadorMultiplos15);
+    console.log('La suma de los pares es: ', sumadorPares);
+}
