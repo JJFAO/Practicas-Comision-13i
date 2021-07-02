@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link rel="shortcut icon"
+    href="https://www.anerbarrena.com/wp-content/uploads/2017/08/programacion-javascript-js-e1503258707880.jpg"
+    type="image/x-icon">
+  <title>JavaScript - Arrays</title>
+</head>
+
+<body class="bg-dark text-white">
+  <main class="container">
+    <h1 class="text-center my-5">Tiendita 🛒</h1>
+    <div class="row my-5">
+      <div class="col-6">
+        <!-- Agregar Producto -->
+        <form class="bg-secondary p-5 rounded">
+          <p class="text-center font-weight-bold">Agregar Productos</p>
+          <div class="mb-3">
+            <label for="inputName" class="form-label">Nombre</label>
+            <input type="txt" class="form-control" id="inputName" placeholder="nombre">
+          </div>
+          <div class="mb-3">
+            <label for="inputPrice" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="inputPrice" placeholder="precio">
+          </div>
+          <button class="btn btn-success font-weight-bold">Agregar ➕</button>
+        </form>
+      </div>
+      <div class="col-6">
+        <!-- Mostrar Producto -->
+        <table class="table bg-light">
+          <thead class="bg-secondary">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</label>
+              <th scope="col">Precio</th>
+              <th scope="col">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Manzana</td>
+              <td>50</td>
+              <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">ver</button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Tomate</td>
+              <td>70</td>
+              <td><button class="btn btn-primary">ver</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Manzana</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Precio: $50
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main> <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
