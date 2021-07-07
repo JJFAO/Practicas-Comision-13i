@@ -83,6 +83,12 @@ const persona = {
     rol: 'Co-mentor',
     apellido: 'Moreno',
 };
+// console.log(persona.nombre)
+
+persona.nombre = 'Victor'
+
+// console.log(persona.nombre)
+
 
 const producto = {
     'nombre-persona': 'cosa',
@@ -119,23 +125,40 @@ function agregarProductos() {
     console.log(productos);
 }
 
-
 //-------- Adicional
 // Que el usuario pueda seleccionar distintos productos de la lista.
- // - Listar productos para el usuario.
- // - Seleccionar un producto del listado.
+// - Listar productos para el usuario.
+
 function mostrarListado() {
-    // console.log(productos)
     for (let i = 0; i < productos.length; i++) {
         const producto = productos[i];
-        console.log(`codigo: ${i}, ${producto.nombre}, $${producto.precio}`)
+        console.log(`codigo: ${i}, ${producto.nombre}, $${producto.precio}`);
     }
 }
 
-
-
-
-// Que estos se agreguen a un array de compras.
+const listaCompras = [];
+// - Seleccionar un producto del listado.
+// - Que estos se agreguen a un array de compras.
+function seleccionarProducto() {
+    const codigo = prompt('Ingrese un código de producto.');
+    if (Number(codigo) === NaN) {
+        alert('No es un codigo valido');
+        return;
+    }
+    listaCompras.push(codigo);
+    const producto = productos[codigo];
+    console.log(`El producto seleccionado: ${producto.nombre}`);
+}
 
 // Y al finalizar que muestre la suma total de todos los productos
 // que seleccionó el usuario.
+function calcularTotalCompra() {
+    let total = 0;
+
+    for (let i = 0; i < listaCompras.length; i++) {
+        const codigo = listaCompras[i];
+        const producto = productos[codigo];
+        total = total + producto.precio;
+    }
+    console.log(`El total de la compra es: $${total} 📠`);
+}
