@@ -20,15 +20,14 @@ const productos = [
 
 function agregarProducto(event) {
     event.preventDefault();
-    console.log("🚀 - inputNombre", inputNombre.value);
-    console.log("🚀 - inputPrecio", inputPrecio.value);
-
+    console.log('🚀 - inputNombre', inputNombre.value);
+    console.log('🚀 - inputPrecio', inputPrecio.value);
 }
 
 formProducto.onsubmit = agregarProducto;
 
 function mostrarProductos() {
-    let contenido = []
+    let contenido = [];
     for (let i = 0; i < productos.length; i++) {
         const producto = productos[i];
         const tr = `
