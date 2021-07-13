@@ -22,7 +22,7 @@
     <div class="row my-5">
       <div class="col-6">
         <!-- Agregar Producto -->
-        <form id="formProducto" class="bg-secondary p-5 rounded">
+        <form onsubmit="agregarProducto(event)" id="formProducto" class="bg-secondary p-5 rounded">
           <p class="text-center font-weight-bold">Agregar Productos</p>
           <div class="mb-3">
             <label for="inputName" class="form-label">Nombre</label>
@@ -47,7 +47,7 @@
             </tr>
           </thead>
           <tbody id="contenidoTabla">
-            <tr>
+            <!-- <tr>
               <th scope="row">1</th>
               <td>Manzana</td>
               <td>50</td>
@@ -59,7 +59,7 @@
               <td>Tomate</td>
               <td>70</td>
               <td><button class="btn btn-primary">ver</button></td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>

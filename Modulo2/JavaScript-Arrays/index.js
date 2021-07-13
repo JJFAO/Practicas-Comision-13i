@@ -85,7 +85,7 @@ const persona = {
 };
 // console.log(persona.nombre)
 
-persona.nombre = 'Victor'
+persona.nombre = 'Victor';
 
 // console.log(persona.nombre)
 

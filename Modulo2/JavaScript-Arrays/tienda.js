@@ -3,6 +3,7 @@ const inputPrecio = document.getElementById('inputPrice');
 const formProducto = document.getElementById('formProducto');
 const contenidoTabla = document.getElementById('contenidoTabla');
 
+// Un array de productos con elementos "hardcodeados".
 const productos = [
     {
         nombre: 'Manzana 🍎',
@@ -19,12 +20,16 @@ const productos = [
 ];
 
 function agregarProducto(event) {
-    event.preventDefault();
-    console.log('🚀 - inputNombre', inputNombre.value);
-    console.log('🚀 - inputPrecio', inputPrecio.value);
+    event.preventDefault(); // Este metodo es necesario para evitar que se
+    // recargue la página, en el evento onsubmit.
+    const nombre = inputNombre.value;
+    const precio = inputPrecio.value;
+    const producto = { nombre: nombre, precio: precio };
+    productos.push(producto);
+    mostrarProductos();
 }
 
-formProducto.onsubmit = agregarProducto;
+// formProducto.onsubmit = agregarProducto; // Alternativa a usar el atributo onsubmit en la etiqueta html.
 
 function mostrarProductos() {
     let contenido = [];
@@ -40,8 +45,8 @@ function mostrarProductos() {
         </tr>
         `;
         contenido.push(tr);
-        contenidoTabla.innerHTML = contenido.join('');
     }
+    contenidoTabla.innerHTML = contenido.join('');
 }
 
 mostrarProductos();
