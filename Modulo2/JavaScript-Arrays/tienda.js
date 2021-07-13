@@ -29,7 +29,7 @@ function agregarProducto(event) {
     mostrarProductos();
 }
 
-// formProducto.onsubmit = agregarProducto; // Alternativa a usar el atributo onsubmit en la etiqueta html.
+formProducto.onsubmit = agregarProducto; // Alternativa a usar el atributo onsubmit en la etiqueta html.
 
 function mostrarProductos() {
     let contenido = [];
@@ -49,4 +49,4 @@ function mostrarProductos() {
     contenidoTabla.innerHTML = contenido.join('');
 }
 
-mostrarProductos();
+mostrarProductos(); // Carga los productos en la tabla al iniciar la aplicación.
