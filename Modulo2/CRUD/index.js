@@ -21,6 +21,8 @@ function agregarUsuario(event) {
     };
 
     usuarios.push(nuevoUsuario);
+    const usuariosJson = JSON.stringify(usuarios);
+    localStorage.setItem('usuarios', usuariosJson);
 
     event.target.reset();
     mostrarUsuarios();
