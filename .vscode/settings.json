@@ -22,5 +22,8 @@
         "titleBar.inactiveForeground": "#e7e7e799"
     },
     "peacock.color": "#4b1102",
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "editor.tokenColorCustomizations": {
+        "comments": "#3c8f79" // change to any color you like
+    },
 }
