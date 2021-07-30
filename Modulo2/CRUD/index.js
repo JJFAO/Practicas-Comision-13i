@@ -63,6 +63,7 @@ function mostrarUsuarios() {
         `;
         return tr;
     }
+
     const contenido = usuarios.map(armarFilasDeUsuarios);
     // El método map genera un array nuevo sin modificar el array original.
     // Recibe por parámetros la función que debe ejecutarse por cada elemento del array.
@@ -97,8 +98,8 @@ function mostrarDetalleUsuario(id) {
 }
 
 /** Esta función carga los datos del usuario seleccionado,
-en los campos del formulario de edición del documento HTML.
-@params {id} El id de un usuario.
+en los campos del formulario de edición en el documento HTML.
+@param {string} id El id de un usuario.
 */
 function cargarModalEditar(id) {
     // Buscar el usuario en el array usando el método find().
@@ -112,7 +113,8 @@ function cargarModalEditar(id) {
 }
 
 /** Al evento submit del formulario de edición le asignamos esta función,
-que actualiza al usuario seleccionado, con los datos ingresados.  */
+que actualiza al usuario seleccionado, con los datos ingresados.
+@param {Event} event evento submit de un formulario*/
 function editarUsuario(event) {
     event.preventDefault();
     const nombreEditado = nombreEditadoInput.value;
@@ -128,11 +130,17 @@ function editarUsuario(event) {
             return usuario;
         }
     }
+
     const usuariosActualizado = usuarios.map(usuariosActualizadoMap);
     usuarios = usuariosActualizado;
     mostrarUsuarios();
+
     const usuariosJson = JSON.stringify(usuarios);
     localStorage.setItem('usuarios', usuariosJson);
+
+    const myModal = document.getElementById('modalEditarUsuario');
+    const modalBootstrap = bootstrap.Modal.getInstance(myModal);
+    modalBootstrap.hide();
 }
 
 mostrarUsuarios();
