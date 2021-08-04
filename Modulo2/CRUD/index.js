@@ -64,9 +64,10 @@ function mostrarUsuarios() {
         return tr;
     }
 
-    const contenido = usuarios.map(armarFilasDeUsuarios);
     // El método map genera un array nuevo sin modificar el array original.
     // Recibe por parámetros la función que debe ejecutarse por cada elemento del array.
+    const contenido = usuarios.map(armarFilasDeUsuarios);
+
     contenidoTabla.innerHTML = contenido.join('');
 }
 
