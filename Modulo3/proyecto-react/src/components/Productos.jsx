@@ -2,7 +2,10 @@ import React from 'react';
 import { Producto } from './Producto';
 
 const Productos = ({ title, productos }) => {
-    const mapProductos = productos.map((producto) => <Producto key={producto.id} producto={producto} />);
+    // const title = props.title;
+    // const productos = props.productos;
+    // const { title, productos } = props;
+    const mapProductos = productos.map((producto) => (<Producto key={producto.id} producto={producto} />));
 
     return (
         <>
