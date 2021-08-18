@@ -22,7 +22,13 @@ function ID() {
     return '_' + Math.random().toString(36).substr(2, 9);
 }
 
-function agregarUsuario(event) {
+/**Esta funcion recibe un objeto con las propiedades {key, value} */
+function guardarEnLocalStorage(objeto) {
+    const datosJson = JSON.stringify(objeto.value); // Convertir datos al formato JSON.
+    localStorage.setItem(objeto.key, datosJson); // Guardar en localStorage.
+}agregarUsuario
+
+function (event) {
     event.preventDefault();
     const email = emailInput.value;
     const pass = passInput.value;
@@ -40,8 +46,9 @@ function agregarUsuario(event) {
 
     usuarios.push(nuevoUsuario);
     mostrarUsuarios();
-    const usuariosJson = JSON.stringify(usuarios); // Convertir datos al formato JSON.
-    localStorage.setItem('usuarios', usuariosJson); // Guardar en localStorage un dato asociado a la key "usuarios".
+    guardarEnLocalStorage({ key: 'usuarios', value: usuarios });
+    // const usuariosJson = JSON.stringify(usuarios); // Convertir datos al formato JSON.
+    // localStorage.setItem('usuarios', usuariosJson); // Guardar en localStorage un dato asociado a la key "usuarios".
     console.log('Se registró exitosamente un usuario. 👨‍💻');
     event.target.reset(); // reset limpia los campos del formulario.
 }
@@ -78,8 +85,7 @@ function eliminarUsuario(id) {
     const usuariosFiltrados = usuarios.filter(usuariosFilter);
     usuarios = usuariosFiltrados;
     mostrarUsuarios();
-    const usuariosJson = JSON.stringify(usuarios);
-    localStorage.setItem('usuarios', usuariosJson);
+    guardarEnLocalStorage({key: 'usuarios', value: usuarios });
 }
 
 function mostrarDetalleUsuario(id) {
