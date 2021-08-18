@@ -26,9 +26,9 @@ function ID() {
 function guardarEnLocalStorage(objeto) {
     const datosJson = JSON.stringify(objeto.value); // Convertir datos al formato JSON.
     localStorage.setItem(objeto.key, datosJson); // Guardar en localStorage.
-}agregarUsuario
+}
 
-function (event) {
+function agregarUsuario(event) {
     event.preventDefault();
     const email = emailInput.value;
     const pass = passInput.value;
