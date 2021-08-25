@@ -56,7 +56,7 @@ function App() {
             <NavRB />
             <Container>
                 <h1>Hola Mundo</h1>
-                <Noticias noticias={news} />
+                <Noticias />
                 {/* <Contador /> */}
                 {/* <Productos title={title} productos={productos} /> */}
                 {/* <Productos title={title2} producto={producto2}/> */}
