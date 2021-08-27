@@ -3,22 +3,35 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Noticia from './Noticia';
+import Button from 'react-bootstrap/esm/Button';
 
 export default function Noticias(props) {
     const [categoria, setCategoria] = useState('');
     const [pais, setPais] = useState('us');
+    const [pagina, setPagina] = useState(1);
+    // - Para crear estados usamos la sintaxis de desestructuración de array, sino deberíamos escribir el código de abajo.
+    // const paginaState = useState(1);
+    // const pagina = paginaState[0];
+    // const setPagina = paginaState[1];
     const [noticias, setNoticias] = useState([]);
-    console.log("🚀 - Noticias - categoria -- Re renderizado del componente", categoria);
+    console.log('🚀 - Noticias - categoria -- Re renderizado del componente', categoria);
 
     useEffect(() => {
         const request = async () => {
-            const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=${pais}&apiKey=b87dd70e3ac44e3aa45d83ed16c8b6dd&category=${categoria}`)
-            const news = response.data.articles;
-            console.log("🚀 - request - news", news);
-            setNoticias(news);
-        }
+            try {
+                const response = await axios.get(
+                    `https://newsapi.org/v2/top-headlines?apiKey=b87dd70e3ac44e3aa45d83ed16c8b6dd&country=${pais}&category=${categoria}&page=${pagina}`
+                );
+                const news = response.data.articles;
+                setNoticias(news);
+            } catch (error) {
+                console.error(error);
+                alert('Hubo un error en la conexión al servidor de newsApi');
+            }
+
+        };
         request();
-    }, [categoria, pais]);
+    }, [categoria, pais, pagina]);
 
     const changeCategoria = (event) => {
         setCategoria(event.target.value);
@@ -28,8 +41,14 @@ export default function Noticias(props) {
         setPais(event.target.value);
     };
 
-    const mapNoticias = noticias.map((noti, i) => <Noticia key={noti.id} noticia={noti} />);
+    const clickPagina = () => {
+        setPagina(pagina - 1);
+    };
+
+    const mapNoticias = noticias.map((noti, i) => <Noticia key={noti.url} noticia={noti} />);
     // const noticia = <Noticia noticia={props.noticia} /> // En el caso de ser solo un objeto noticia, no es necesario el .map
+
+    const anteriorDisabled = pagina === 1;
 
     return (
         <div>
@@ -50,7 +69,23 @@ export default function Noticias(props) {
                 </select>
             </form>
             <p className="text-primary">{categoria}</p>
-            <div className="d-flex flex-wrap">{mapNoticias}</div>
+            <div className="d-flex flex-wrap">
+                {/* --- Listado de noticias --- */}
+                {mapNoticias}
+            </div>
+
+            <div>{pagina}</div>
+
+            {/* si la pagina es igual a 1, que no se muestre el botón */}
+            <Button onClick={clickPagina} disabled={anteriorDisabled}>Anterior</Button>
+            <Button
+                onClick={() => {
+                    setPagina(pagina + 1);
+                }}
+                disabled={noticias.length === 0}
+            >
+                Siguiente
+            </Button>
         </div>
     );
 }

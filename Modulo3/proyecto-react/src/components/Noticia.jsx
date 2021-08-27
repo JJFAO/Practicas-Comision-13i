@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import './noticia.css';
 
 export default function Noticia(props) {
+    // const { title, url } = props.noticias;
 
     return (
         <Card className="card-noticia">
