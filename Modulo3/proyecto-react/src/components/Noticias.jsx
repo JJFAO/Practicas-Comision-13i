@@ -48,7 +48,8 @@ export default function Noticias(props) {
     const mapNoticias = noticias.map((noti, i) => <Noticia key={noti.url} noticia={noti} />);
     // const noticia = <Noticia noticia={props.noticia} /> // En el caso de ser solo un objeto noticia, no es necesario el .map
 
-    const anteriorDisabled = pagina === 1;
+    const isAnteriorDisabled = pagina === 1;
+    const isSiguienteDisabled = noticias.length === 0;
 
     return (
         <div>
@@ -77,12 +78,12 @@ export default function Noticias(props) {
             <div>{pagina}</div>
 
             {/* si la pagina es igual a 1, que no se muestre el botón */}
-            <Button onClick={clickPagina} disabled={anteriorDisabled}>Anterior</Button>
+            <Button onClick={clickPagina} disabled={isAnteriorDisabled}>Anterior</Button>
             <Button
                 onClick={() => {
                     setPagina(pagina + 1);
                 }}
-                disabled={noticias.length === 0}
+                disabled={isSiguienteDisabled}
             >
                 Siguiente
             </Button>
