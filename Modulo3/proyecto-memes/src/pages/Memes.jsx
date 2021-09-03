@@ -1,7 +1,7 @@
 import Meme from '../components/Meme';
 
 const Memes = ({ memes }) => {
-    const mapMemes = memes.map((meme) => (<Meme key={meme.id} meme={meme} />));
+    const mapMemes = memes.map((meme, i) => (<Meme key={i} meme={meme} />));
 
     return (
         <>

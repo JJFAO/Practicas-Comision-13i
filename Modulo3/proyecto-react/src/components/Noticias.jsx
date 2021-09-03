@@ -14,7 +14,7 @@ export default function Noticias(props) {
     // const pagina = paginaState[0];
     // const setPagina = paginaState[1];
     const [noticias, setNoticias] = useState([]);
-    console.log('🚀 - Noticias - categoria -- Re renderizado del componente', categoria);
+    // console.log('🚀 - Noticias - categoria -- Re renderizado del componente', categoria);
 
     useEffect(() => {
         const request = async () => {
@@ -29,8 +29,11 @@ export default function Noticias(props) {
                 alert('Hubo un error en la conexión al servidor de newsApi');
             }
 
+            console.log('3 - llamado dentro de la función asincrona');
         };
+        console.log('1 - llamado antes de la función asincrona');
         request();
+        console.log('2 - llamado despues de la función asincrona');
     }, [categoria, pais, pagina]);
 
     const changeCategoria = (event) => {

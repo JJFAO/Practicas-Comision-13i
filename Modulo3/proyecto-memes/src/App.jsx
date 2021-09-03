@@ -8,15 +8,13 @@ import Login from './pages/Login';
 import Admin from './pages/Admin';
 import Perfil from './pages/Perfil';
 import { useState } from 'react';
+import { leerDeLocalStorage } from './utils/localStorage';
 
-const memes = [
-    { urlToImage: '', title: 'meme1'},
-    { urlToImage: '', title: 'meme2'},
-    { urlToImage: '', title: 'meme3'},
-]
+const memesLocal = leerDeLocalStorage('memes') || [];
 
 function App() {
     const [seccion, setSeccion] = useState('perfil');
+    const [memes, setMemes] = useState(memesLocal);
 
     return (
         <div className="footer-fix">
@@ -27,7 +25,7 @@ function App() {
 
                 {seccion === 'login' && <Login />}
 
-                {seccion === 'admin' && <Admin />}
+                {seccion === 'admin' && <Admin memes={memes} setMemes={setMemes} />}
 
                 {seccion === 'perfil' && <Perfil />}
             </Container>

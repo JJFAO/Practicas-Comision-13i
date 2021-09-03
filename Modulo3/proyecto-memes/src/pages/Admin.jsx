@@ -1,16 +1,21 @@
 import { useState } from 'react';
-import { Button, Form, InputGroup, Row } from 'react-bootstrap';
+import { Button, Form, InputGroup, Row, Table } from 'react-bootstrap';
+import { guardarEnLocalStorage } from '../utils/localStorage';
 
-export default function Admin() {
+export default function Admin(props) {
+    const { memes, setMemes } = props;
     const [validated, setValidated] = useState(false);
     const [input, setInput] = useState({ titulo: '', imagen: '' });
-    const [memes, setMemes] = useState([]);
 
     const handleChange = (event) => {
         // Extraemos y guardamos en variables, el nombre y el valor del input en el que escribió el usuario.
+        // const inputHtml = event.target;
+        // const name = inputHtml.name;
+        // const value = inputHtml.value;
         const { value, name } = event.target;
-         // Declaramos un objeto que contiene una copia de las propiedades del state input,
-         // más el dato nuevo ingresado usando el name y value del elemento.
+
+        // Declaramos un objeto que contiene una copia de las propiedades del state input,
+        // más el dato nuevo ingresado usando el name y value del elemento.
         const newInput = { ...input, [name]: value };
         // Con ese objeto actualizamos el estado.
         setInput(newInput);
@@ -24,13 +29,13 @@ export default function Admin() {
 
         // Chequea que los campos del formulario sean válidos.
         if (form.checkValidity() === true) {
-
             // Forma incorrecta de actualizar un array state, mutando el objeto.
             // memes.push(input);
 
             // Forma correcta, crear un nuevo array, copiando los elementos previos.
             const nuevoArray = [...memes, input];
             setMemes(nuevoArray);
+            guardarEnLocalStorage({ key: 'memes', value: nuevoArray });
         }
     };
 
@@ -75,6 +80,22 @@ export default function Admin() {
                     </Button>
                 </Row>
             </Form>
+
+            <Table className="mt-5 mx-auto" style={{ width: '600px' }} striped bordered hover size="sm">
+                <tbody>
+                    {memes.length === 0
+                        ? 'No hay memes guardados'
+                        : memes.map(({titulo, imagen}, i) => {
+                            return(
+                                <tr key={i}>
+                                  <td>
+                                      <img src={imagen} alt="" style={{width: '5rem'}} />
+                                  </td>
+                                  <td>{titulo}</td>
+                              </tr>
+                          )})}
+                </tbody>
+            </Table>
         </>
     );
 }
