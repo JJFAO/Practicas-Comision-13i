@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Form, InputGroup, Row, Table } from 'react-bootstrap';
+import { Button, Form, InputGroup, Row } from 'react-bootstrap';
 import TableMemes from '../components/TableMemes';
 import { guardarEnLocalStorage } from '../utils/localStorage';
 
