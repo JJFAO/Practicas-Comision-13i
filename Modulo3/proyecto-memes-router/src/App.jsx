@@ -15,12 +15,11 @@ import { leerDeLocalStorage } from './utils/localStorage';
 const memesLocal = leerDeLocalStorage('memes') || [];
 
 function App() {
-    const [seccion, setSeccion] = useState('memes');
     const [memes, setMemes] = useState(memesLocal);
 
     return (
         <div className="footer-fix">
-            <NavRB setSeccion={setSeccion} />
+            <NavRB />
 
             <Container>
                 <Switch>
