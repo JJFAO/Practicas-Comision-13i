@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Form, InputGroup, Row } from 'react-bootstrap';
 import TableMemes from '../components/TableMemes';
+import { ID } from '../utils/id';
 import { guardarEnLocalStorage } from '../utils/localStorage';
 
 export default function Admin(props) {
@@ -34,7 +35,8 @@ export default function Admin(props) {
             // memes.push(input);
 
             // Forma correcta, crear un nuevo array, copiando los elementos previos.
-            const nuevoArray = [...memes, input];
+            const nuevoMeme = { ...input, id: ID() };
+            const nuevoArray = [...memes, nuevoMeme ];
             setMemes(nuevoArray);
             guardarEnLocalStorage({ key: 'memes', value: nuevoArray });
         }

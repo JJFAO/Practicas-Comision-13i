@@ -11,6 +11,7 @@ import Admin from './pages/Admin';
 import Perfil from './pages/Perfil';
 import { useState } from 'react';
 import { leerDeLocalStorage } from './utils/localStorage';
+import DetalleMeme from './pages/DetalleMeme';
 
 const memesLocal = leerDeLocalStorage('memes') || [];
 
@@ -37,6 +38,10 @@ function App() {
 
                     <Route path="/perfil">
                         <Perfil/>
+                    </Route>
+
+                    <Route path="/meme/:memeId">
+                        <DetalleMeme />
                     </Route>
 
                     <Route path="/404">
