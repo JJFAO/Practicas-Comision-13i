@@ -1,17 +1,14 @@
-import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
 import './meme.css';
 
-export default function Meme(props) {
+export default function MemeFullScreen(props) {
     return (
-        <Card className="card-meme">
+        <Card className="card-meme mx-auto" style={{width: '30rem' }}>
             <Card.Img variant="top" src={props.meme.imagen} />
             <Card.Body>
                 <Card.Title>{props.meme.titulo}</Card.Title>
                 {/* <span>{props.meme.publishedAt}</span> */}
             </Card.Body>
-            <Button as={Link} to={`/meme/${props.meme.id}`}>Ver Detalle</Button>
         </Card>
     );
 }

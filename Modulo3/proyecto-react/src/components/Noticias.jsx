@@ -1,9 +1,9 @@
-// const props = { noticia: noti };
-// Noticia(props);
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Noticia from './Noticia';
 import Button from 'react-bootstrap/esm/Button';
+
+const BASE_URL = 'https://newsapi.org/v2';
 
 export default function Noticias(props) {
     const [categoria, setCategoria] = useState('');
@@ -19,9 +19,15 @@ export default function Noticias(props) {
     useEffect(() => {
         const request = async () => {
             try {
-                const response = await axios.get(
-                    `https://newsapi.org/v2/top-headlines?apiKey=b87dd70e3ac44e3aa45d83ed16c8b6dd&country=${pais}&category=${categoria}&page=${pagina}`
-                );
+                const config = {
+                    params: {
+                        apiKey: 'b87dd70e3ac44e3aa45d83ed16c8b6dd',
+                        country: pais,
+                        category: categoria,
+                        page: pagina,
+                    },
+                };
+                const response = await axios.get(`${BASE_URL}/top-headlines`, config);
                 const news = response.data.articles;
                 setNoticias(news);
             } catch (error) {
@@ -81,7 +87,9 @@ export default function Noticias(props) {
             <div>{pagina}</div>
 
             {/* si la pagina es igual a 1, que no se muestre el botón */}
-            <Button onClick={clickPagina} disabled={isAnteriorDisabled}>Anterior</Button>
+            <Button onClick={clickPagina} disabled={isAnteriorDisabled}>
+                Anterior
+            </Button>
             <Button
                 onClick={() => {
                     setPagina(pagina + 1);
