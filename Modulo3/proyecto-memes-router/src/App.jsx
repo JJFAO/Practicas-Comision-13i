@@ -14,13 +14,17 @@ import { leerDeLocalStorage } from './utils/localStorage';
 import DetalleMeme from './pages/DetalleMeme';
 
 const memesLocal = leerDeLocalStorage('memes') || [];
+const userLocal = leerDeLocalStorage('user') || {};
 
 function App() {
     const [memes, setMemes] = useState(memesLocal);
+    const [user, setUser] = useState(userLocal);
+
+    const isAdmin = user.role === 'admin';
 
     return (
         <div className="footer-fix">
-            <NavRB />
+            <NavRB user={user} />
 
             <Container>
                 <Switch>
@@ -29,24 +33,26 @@ function App() {
                     </Route>
 
                     <Route path="/login">
-                        <Login />
+                        <Login setUser={setUser} />
                     </Route>
 
-                    <Route path="/admin">
-                        <Admin memes={memes} setMemes={setMemes} />
-                    </Route>
+                    {isAdmin && (
+                        <Route path="/admin">
+                            <Admin memes={memes} setMemes={setMemes} user={user} />
+                        </Route>
+                    )}
 
+                    {isAdmin && (
                     <Route path="/perfil">
-                        <Perfil/>
+                        <Perfil />
                     </Route>
+                    )}
 
                     <Route path="/meme/:memeId">
                         <DetalleMeme />
                     </Route>
 
-                    <Route path="/404">
-                        404
-                    </Route>
+                    <Route path="/404">404</Route>
 
                     <Route path="*">
                         <Redirect to="/404" />

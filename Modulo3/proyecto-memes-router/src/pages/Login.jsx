@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { Button, Card, Col, Container, Form, InputGroup, Row } from 'react-bootstrap';
+import { guardarEnLocalStorage } from '../utils/localStorage';
 
-const user = { nombre: 'rick', email: 'rik@mail.com', password: '123123'};
+const user = { nombre: 'rick', email: 'rik@mail.com', password: '123123', role: 'admin' };
 
-export default function Login() {
+export default function Login({ setUser }) {
     const [validated, setValidated] = useState(false);
     const [input, setInput] = useState({ email: '', password: '' });
     const history = useHistory();
@@ -29,6 +30,8 @@ export default function Login() {
             if (user.email === input.email && user.password === input.password) {
                 alert('Bienvenido ' + user.nombre);
                 //El push redirecciona a la pantalla indicada en el parametro.
+                setUser(user);
+                guardarEnLocalStorage({ key: 'user', value: user });
                 history.push('/admin');
             } else {
                 alert('Datos incorrectos');
