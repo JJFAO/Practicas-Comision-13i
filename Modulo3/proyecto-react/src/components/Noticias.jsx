@@ -14,21 +14,32 @@ export default function Noticias(props) {
     // const pagina = paginaState[0];
     // const setPagina = paginaState[1];
     const [noticias, setNoticias] = useState([]);
-    // console.log('🚀 - Noticias - categoria -- Re renderizado del componente', categoria);
 
     useEffect(() => {
         const request = async () => {
             try {
                 const config = {
                     params: {
-                        apiKey: 'b87dd70e3ac44e3aa45d83ed16c8b6dd',
+                        apiKey: '3b16ba836a2f40979f43e7f8d5f21cc7',
                         country: pais,
                         category: categoria,
-                        page: pagina,
+                        // page: pagina,
                     },
                 };
-                const response = await axios.get(`${BASE_URL}/top-headlines`, config);
-                const news = response.data.articles;
+
+                let promises = [];
+                for (let i = 1; i <= 3; i++) {
+                    const promise = axios.get(`${BASE_URL}/top-headlines?page=${i}`, config);
+                    promises = [...promises, promise];
+                }
+                const responses = await Promise.all(promises);
+
+                let news = [];
+                for (let i = 0; i < responses.length; i++) {
+                    const response = responses[i];
+                    news = [...news, ...response.data.articles];
+                }
+
                 setNoticias(news);
             } catch (error) {
                 console.error(error);
@@ -40,7 +51,7 @@ export default function Noticias(props) {
         console.log('1 - llamado antes de la función asincrona');
         request();
         console.log('2 - llamado despues de la función asincrona');
-    }, [categoria, pais, pagina]);
+    }, [categoria, pais]);
 
     const changeCategoria = (event) => {
         setCategoria(event.target.value);
@@ -54,7 +65,13 @@ export default function Noticias(props) {
         setPagina(pagina - 1);
     };
 
-    const mapNoticias = noticias.map((noti, i) => <Noticia key={noti.url} noticia={noti} />);
+
+    const limit = 4;
+    const initial = 0 + pagina * limit - limit;
+    const last = initial + limit;
+
+    const newsPaginated = noticias/* .filter((noti) => noti.category === 'business') */.slice(initial, last);
+    const mapNoticias = newsPaginated.map((noti, i) => <Noticia key={noti.url} noticia={noti} />);
     // const noticia = <Noticia noticia={props.noticia} /> // En el caso de ser solo un objeto noticia, no es necesario el .map
 
     const isAnteriorDisabled = pagina === 1;
