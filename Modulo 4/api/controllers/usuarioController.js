@@ -39,18 +39,43 @@ exports.crearUsuario = async (req, res) => {
     }
 };
 
-exports.obtenerUsuarios = (req, res) => {
-    console.log('Funcion obtener usuarios');
-    res.send('Lista de usuarios');
+exports.obtenerUsuarios = async (req, res) => {
+    try {
+        const usuarios = await Usuario.find();
+        res.send(usuarios);
+    } catch (error) {
+        res.status(400).send('Hubo un error en la conexion a la base de datos');
+    }
 };
 
-exports.obtenerUsuario = (req, res) => {
-    console.log('Usuario encontrado', req.params);
+exports.obtenerUsuario = async (req, res) => {
+    try {
+        const usuario = await Usuario.findById(req.params.id).select('name email');
+        res.send(usuario);
+    } catch (error) {
+        res.status(400).send('Hubo un error en la conexion a la base de datos');
+    }
 };
 
-exports.modificarUsuario = (req, res) => {
-    console.log('Usuario encontrado', req.params);
+exports.modificarUsuario = async (req, res) => {
+    try {
+        const usuario = await Usuario.findById(req.params.id);
+        if (!req.body.name) {
+            return res.status(400).send('Dato de nombre incompleto');
+        }
+        usuario.name = req.body.name;
+        await usuario.save();
+        res.send(usuario);
+    } catch (error) {
+        res.status(400).send('Hubo un error en la conexion a la base de datos');
+    }
 };
-exports.borrarUsuario = (req, res) => {
-    console.log('Usuario encontrado para borrar', req.params);
+
+exports.borrarUsuario = async (req, res) => {
+    try {
+        await Usuario.findByIdAndDelete(req.params.id);
+        res.send('usuario eliminado');
+    } catch (error) {
+        res.status(400).send('Hubo un error en la conexion a la base de datos');
+    }
 };
