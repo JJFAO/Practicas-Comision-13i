@@ -20,6 +20,11 @@ const UsuariosSchema = mongoose.Schema({
         type: Date,
         default: Date.now(),
     },
+    role: {
+        type: String,
+        default: 'user',
+        trim: true,
+    },
 });
 
 module.exports = mongoose.model('Usuario', UsuariosSchema);
