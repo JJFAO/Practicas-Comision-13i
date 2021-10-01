@@ -4,8 +4,6 @@ import { Button, Card, Col, Container, Form, InputGroup, Row } from 'react-boots
 import axios from 'axios';
 import { guardarEnLocalStorage } from '../utils/localStorage';
 
-const user = { nombre: 'rick', email: 'rik@mail.com', password: '123123', role: 'admin' };
-
 export default function Login({ setUser }) {
     const [validated, setValidated] = useState(false);
     const [input, setInput] = useState({ email: '', password: '' });
@@ -28,22 +26,22 @@ export default function Login({ setUser }) {
 
         // Chequea que los campos del formulario sean válidos.
         if (form.checkValidity() === true) {
-            const response = await axios.post('http://localhost:4000/api/auth/login', input);
-            const token = response.data.token;
-            guardarEnLocalStorage({ key: 'token', value: { token } });
-
-            // if () {
-            //     alert('Bienvenido ' + user.nombre);
-            //     //El push redirecciona a la pantalla indicada en el parametro.
-
-            //     //Consultar a el back a la ruta /login, con el usuario y contraseña.
-
-            //     history.push('/admin');
-            // } else {
-            //     alert('Datos incorrectos');
-            //     form.reset();
-            //     setInput({});
-            // }
+            try {
+                //Consultar a el back a la ruta /login, con el usuario y contraseña.
+                const response = await axios.post('http://localhost:4000/api/auth/login', input);
+                const { token, name } = response.data;
+                guardarEnLocalStorage({ key: 'token', value: { token } });
+                alert('Bienvenido ' + name);
+                //El push redirecciona a la pantalla indicada en el parametro.
+                history.push('/admin');
+            } catch (error) {
+                console.error(error);
+                if (error.response.data) {
+                    alert(JSON.stringify(error.response.data));
+                } else {
+                    alert('Error de conexion');
+                }
+            }
         }
     };
 

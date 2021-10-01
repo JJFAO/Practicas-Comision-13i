@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { Button, Form, InputGroup, Row } from 'react-bootstrap';
+import { Button, Form, InputGroup, Row, Spinner } from 'react-bootstrap';
 import TableMemes from '../components/TableMemes';
-import { ID } from '../utils/id';
-import { guardarEnLocalStorage } from '../utils/localStorage';
+import axios from 'axios';
 
 export default function Admin(props) {
     const { memes, setMemes } = props;
     const [validated, setValidated] = useState(false);
     const [input, setInput] = useState({ titulo: '', imagen: '' });
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (event) => {
         // Extraemos y guardamos en variables, el nombre y el valor del input en el que escribió el usuario.
@@ -23,7 +23,7 @@ export default function Admin(props) {
         setInput(newInput);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         event.stopPropagation();
         setValidated(true);
@@ -35,10 +35,15 @@ export default function Admin(props) {
             // memes.push(input);
 
             // Forma correcta, crear un nuevo array, copiando los elementos previos.
-            const nuevoMeme = { ...input, id: ID() };
-            const nuevoArray = [...memes, nuevoMeme ];
-            setMemes(nuevoArray);
-            guardarEnLocalStorage({ key: 'memes', value: nuevoArray });
+            // const nuevoArray = [...memes, input];
+            setIsLoading(true);
+
+            await axios.post('http://localhost:4000/api/memes', input);
+
+            const response = await axios.get('http://localhost:4000/api/memes');
+            setMemes(response.data);
+
+            setIsLoading(false);
         }
     };
 
@@ -78,8 +83,13 @@ export default function Admin(props) {
                     </InputGroup>
                 </Form.Group>
                 <Row>
-                    <Button type="submit" className="mx-auto">
+                    <Button type="submit" className="mx-auto" disable={isLoading}>
                         Crear Meme
+                        {isLoading && (
+                            <Spinner animation="border" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner>
+                        )}
                     </Button>
                 </Row>
             </Form>

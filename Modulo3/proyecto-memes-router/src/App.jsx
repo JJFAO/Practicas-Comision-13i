@@ -9,16 +9,35 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
 import Perfil from './pages/Perfil';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { leerDeLocalStorage } from './utils/localStorage';
 import DetalleMeme from './pages/DetalleMeme';
+import axios from 'axios';
 
-const memesLocal = leerDeLocalStorage('memes') || [];
-const userLocal = leerDeLocalStorage('user') || {};
+const tokenLocal = leerDeLocalStorage('token') || {};
 
 function App() {
-    const [memes, setMemes] = useState(memesLocal);
-    const [user, setUser] = useState(userLocal);
+    const [memes, setMemes] = useState([]);
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        if (!tokenLocal.token) return;
+
+        const request = async () => {
+            const headers = { 'x-auth-token': tokenLocal.token };
+            const response = await axios.get('http://localhost:4000/api/auth', { headers });
+            setUser(response.data);
+        };
+        request();
+    }, []);
+
+    useEffect(() => {
+        const request = async () => {
+            const response = await axios.get('http://localhost:4000/api/memes');
+            setMemes(response.data);
+        };
+        request();
+    }, [])
 
     const isAdmin = user.role === 'admin';
 
@@ -33,7 +52,7 @@ function App() {
                     </Route>
 
                     <Route path="/login">
-                        <Login setUser={setUser} />
+                        <Login />
                     </Route>
 
                     {isAdmin && (
@@ -43,9 +62,9 @@ function App() {
                     )}
 
                     {isAdmin && (
-                    <Route path="/perfil">
-                        <Perfil />
-                    </Route>
+                        <Route path="/perfil">
+                            <Perfil />
+                        </Route>
                     )}
 
                     <Route path="/meme/:memeId">

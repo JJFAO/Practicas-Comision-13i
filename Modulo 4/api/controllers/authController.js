@@ -51,7 +51,7 @@ exports.login = async (req, res) => {
 
         const { email, password } = req.body;
         //Revisar usuario registrado
-        let usuario = await Usuario.findOne({ email });
+        const usuario = await Usuario.findOne({ email });
         if (!usuario) {
             return res.status(400).json({ msg: 'El Usuario no existe' });
         }
@@ -78,7 +78,7 @@ exports.login = async (req, res) => {
             },
             (error, token) => {
                 if (error) throw error;
-                res.json({ token });
+                res.json({ token, name: usuario.name });
             }
         );
     } catch (error) {
@@ -97,7 +97,7 @@ exports.obtenerUsuarioAutenticado = async (req, res) => {
     // Validar Token
     try {
         const cifrado = jwt.verify(token, process.env.SECRETA);
-        const usuario = await Usuario.findById(cifrado.usuario.id);
+        const usuario = await Usuario.findById(cifrado.usuario.id).select('name role email');
         res.send(usuario);
     } catch (error) {
         res.status(401).json({ msg: 'Token no valido' });
