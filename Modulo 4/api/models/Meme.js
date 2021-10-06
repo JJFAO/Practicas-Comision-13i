@@ -14,6 +14,11 @@ const MemesSchema = mongoose.Schema({
         type: Date,
         required: true,
     },
+    creador: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Usuario',
+        required: true,
+    },
 });
 
 module.exports = mongoose.model('Meme', MemesSchema);

@@ -1,9 +1,19 @@
+const jwt = require('jsonwebtoken');
 const Meme = require('../models/Meme');
 
 exports.crearMeme = async (req, res) => {
     try {
+        // Leer token
+        const token = req.header('x-auth-token');
+        // Revisar Token
+        if (!token) {
+            return res.status(401).json({ msg: 'No hay Token, permiso no valido' });
+        }
+
+        const cifrado = jwt.verify(token, process.env.SECRETA);
+
         //nuevo meme
-        const meme = new Meme(req.body);
+        const meme = new Meme({ ...req.body, creador: cifrado.usuario.id });
         meme.fecha = new Date();
         await meme.save();
         res.send('Meme creado');
@@ -15,7 +25,7 @@ exports.crearMeme = async (req, res) => {
 
 exports.obtenerMemes = async (req, res) => {
     try {
-        const memes = await Meme.find();
+        const memes = await Meme.find().populate({ path: 'creador', select: 'name' });
         res.send(memes);
     } catch (error) {
         console.log(error);
