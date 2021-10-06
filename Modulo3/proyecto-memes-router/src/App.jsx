@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import { leerDeLocalStorage } from './utils/localStorage';
 import DetalleMeme from './pages/DetalleMeme';
 import axios from 'axios';
+import Register from './pages/Register';
 
 const tokenLocal = leerDeLocalStorage('token') || {};
 
@@ -69,6 +70,10 @@ function App() {
 
                     <Route path="/meme/:memeId">
                         <DetalleMeme />
+                    </Route>
+
+                    <Route path="/register">
+                        <Register />
                     </Route>
 
                     <Route path="/404">404</Route>

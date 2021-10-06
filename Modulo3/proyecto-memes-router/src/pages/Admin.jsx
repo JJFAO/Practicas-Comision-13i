@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { Button, Form, InputGroup, Row, Spinner } from 'react-bootstrap';
 import TableMemes from '../components/TableMemes';
 import axios from 'axios';
+import { leerDeLocalStorage } from '../utils/localStorage';
+
+const tokenLocal = leerDeLocalStorage('token') || {};
 
 export default function Admin(props) {
-    const { memes, setMemes } = props;
+    const { memes, setMemes, user } = props;
     const [validated, setValidated] = useState(false);
     const [input, setInput] = useState({ titulo: '', imagen: '' });
     const [isLoading, setIsLoading] = useState(false);
@@ -38,7 +41,8 @@ export default function Admin(props) {
             // const nuevoArray = [...memes, input];
             setIsLoading(true);
 
-            await axios.post('http://localhost:4000/api/memes', input);
+            const headers = { 'x-auth-token': tokenLocal.token };
+            await axios.post('http://localhost:4000/api/memes', input, { headers });
 
             const response = await axios.get('http://localhost:4000/api/memes');
             setMemes(response.data);
