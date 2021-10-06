@@ -4,7 +4,7 @@ import { Button, Card, Col, Container, Form, InputGroup, Row } from 'react-boots
 import axios from 'axios';
 import { guardarEnLocalStorage } from '../utils/localStorage';
 
-export default function Login({ setUser }) {
+export default function Login({ requestUserData }) {
     const [validated, setValidated] = useState(false);
     const [input, setInput] = useState({ email: '', password: '' });
     const history = useHistory();
@@ -33,6 +33,7 @@ export default function Login({ setUser }) {
                 guardarEnLocalStorage({ key: 'token', value: { token } });
                 alert('Bienvenido ' + name);
                 //El push redirecciona a la pantalla indicada en el parametro.
+                await requestUserData();
                 history.push('/admin');
             } catch (error) {
                 console.error(error);

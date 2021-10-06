@@ -1,4 +1,4 @@
-import { Container } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,21 +15,25 @@ import DetalleMeme from './pages/DetalleMeme';
 import axios from 'axios';
 import Register from './pages/Register';
 
-const tokenLocal = leerDeLocalStorage('token') || {};
-
 function App() {
     const [memes, setMemes] = useState([]);
     const [user, setUser] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        if (!tokenLocal.token) return;
+    const requestUserData = async () => {
+        setIsLoading(true);
+        const tokenLocal = leerDeLocalStorage('token') || {};
 
-        const request = async () => {
+        if (tokenLocal.token) {
             const headers = { 'x-auth-token': tokenLocal.token };
             const response = await axios.get('http://localhost:4000/api/auth', { headers });
             setUser(response.data);
-        };
-        request();
+        }
+        setIsLoading(false);
+    };
+
+    useEffect(() => {
+        requestUserData();
     }, []);
 
     useEffect(() => {
@@ -38,9 +42,20 @@ function App() {
             setMemes(response.data);
         };
         request();
-    }, [])
+    }, []);
 
     const isAdmin = user.role === 'admin';
+
+    if (isLoading) {
+        return (
+            <>
+                Cargando...
+                <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </>
+        );
+    }
 
     return (
         <div className="footer-fix">
@@ -53,7 +68,7 @@ function App() {
                     </Route>
 
                     <Route path="/login">
-                        <Login />
+                        <Login requestUserData={requestUserData} />
                     </Route>
 
                     {isAdmin && (
