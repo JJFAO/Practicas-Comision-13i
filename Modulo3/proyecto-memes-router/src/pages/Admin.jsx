@@ -4,10 +4,8 @@ import TableMemes from '../components/TableMemes';
 import axios from 'axios';
 import { leerDeLocalStorage } from '../utils/localStorage';
 
-const tokenLocal = leerDeLocalStorage('token') || {};
-
 export default function Admin(props) {
-    const { memes, setMemes, user } = props;
+    const { memes } = props;
     const [validated, setValidated] = useState(false);
     const [input, setInput] = useState({ titulo: '', imagen: '' });
     const [isLoading, setIsLoading] = useState(false);
@@ -41,11 +39,11 @@ export default function Admin(props) {
             // const nuevoArray = [...memes, input];
             setIsLoading(true);
 
+            const tokenLocal = leerDeLocalStorage('token') || {};
             const headers = { 'x-auth-token': tokenLocal.token };
             await axios.post('http://localhost:4000/api/memes', input, { headers });
 
-            const response = await axios.get('http://localhost:4000/api/memes');
-            setMemes(response.data);
+            await props.actualizarMemes();
 
             setIsLoading(false);
         }
@@ -98,7 +96,7 @@ export default function Admin(props) {
                 </Row>
             </Form>
 
-            <TableMemes memes={memes} />
+            <TableMemes actualizarMemes={props.actualizarMemes} memes={memes} />
         </>
     );
 }

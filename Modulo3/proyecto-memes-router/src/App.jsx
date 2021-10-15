@@ -36,12 +36,13 @@ function App() {
         requestUserData();
     }, []);
 
+    const getMemes = async () => {
+        const response = await axios.get('http://localhost:4000/api/memes');
+        setMemes(response.data);
+    };
+
     useEffect(() => {
-        const request = async () => {
-            const response = await axios.get('http://localhost:4000/api/memes');
-            setMemes(response.data);
-        };
-        request();
+        getMemes();
     }, []);
 
     const isAdmin = user.role === 'admin';
@@ -73,7 +74,7 @@ function App() {
 
                     {isAdmin && (
                         <Route path="/admin">
-                            <Admin memes={memes} setMemes={setMemes} user={user} />
+                            <Admin actualizarMemes={getMemes} memes={memes} user={user} />
                         </Route>
                     )}
 
