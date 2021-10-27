@@ -85,7 +85,7 @@ export default function Admin(props) {
                     </InputGroup>
                 </Form.Group>
                 <Row>
-                    <Button type="submit" className="mx-auto" disable={isLoading}>
+                    <Button type="submit" className="mx-auto" disabled={isLoading}>
                         Crear Meme
                         {isLoading && (
                             <Spinner animation="border" role="status">

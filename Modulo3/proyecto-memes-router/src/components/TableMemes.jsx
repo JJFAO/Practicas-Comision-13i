@@ -1,10 +1,14 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { Button, Spinner, Table } from 'react-bootstrap';
+import { Button, Form, InputGroup, Modal, Row, Spinner, Table } from 'react-bootstrap';
 import { leerDeLocalStorage } from '../utils/localStorage';
 
 export default function TableMemes(props) {
     const [isLoading, setIsLoading] = useState(false);
+    const [isModal, setIsModal] = useState(false);
+    const [currentMeme, setCurrentMeme] = useState({});
+
+    const handleClose = () => setIsModal(false);
 
     const deleteMeme = async (id) => {
         setIsLoading(true);
@@ -15,32 +19,49 @@ export default function TableMemes(props) {
         setIsLoading(false);
     };
 
+    const editMeme = (meme) => {
+        setIsModal(true);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('submit', currentMeme);
+    };
+
+    const handleChange = (event) => {
+        const { value, name } = event.target;
+        const updatedMeme = { ...currentMeme, [name]: value };
+        setCurrentMeme(updatedMeme);
+    };
+
     return (
         <div className="position-relative">
             <Table className="mt-5 mx-auto" style={{ width: '600px' }} striped bordered hover size="sm">
                 <tbody>
-                    {props.memes.length === 0
-                        ? 'No hay memes guardados'
-                        : props.memes.map(({ titulo, imagen, _id }, i) => {
-                              return (
-                                  <tr key={i}>
-                                      <td>
-                                          <img src={imagen} alt="" style={{ width: '5rem' }} />
-                                      </td>
-                                      <td>{titulo}</td>
-                                      <td>
-                                          <Button onClick={() => deleteMeme(_id)} variant="none">
-                                              <img
-                                                  src="https://icongr.am/clarity/eraser.svg?size=20&color=910d0d"
-                                                  alt=""
-                                              />
-                                          </Button>
-                                      </td>
-                                  </tr>
-                              );
-                          })}
+                    {props.memes.map((meme, i) => {
+                        return (
+                            <tr key={i}>
+                                <td>
+                                    <img src={meme.imagen} alt="" style={{ width: '5rem' }} />
+                                </td>
+                                <td>{meme.titulo}</td>
+                                <td>
+                                    <Button onClick={() => deleteMeme(meme._id)} variant="none">
+                                        <img
+                                            src="https://icongr.am/clarity/eraser.svg?size=20&color=910d0d"
+                                            alt=""
+                                        />
+                                    </Button>
+                                    <Button onClick={() => editMeme(meme)}>Editar</Button>
+                                </td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </Table>
+
+            {props.memes.length === 0 && 'No hay memes guardados'}
+
             {isLoading && (
                 <div
                     style={{ zIndex: 2, backgroundColor: '#00000017' }}
@@ -49,6 +70,54 @@ export default function TableMemes(props) {
                     <Spinner animation="border" role="status" />
                 </div>
             )}
+
+            <Modal show={isModal} onHide={handleClose}>
+                <Form onSubmit={handleSubmit}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Editar Meme</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="p-5">
+                        <Form.Group controlId="titulo">
+                            <Form.Label>Titulo</Form.Label>
+                            <Form.Control
+                                name="titulo"
+                                value={currentMeme.titulo}
+                                onChange={(e) => handleChange(e)}
+                                required
+                                type="text"
+                                placeholder="Meme"
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="imagen">
+                            <Form.Label>Imagen</Form.Label>
+                            <InputGroup hasValidation>
+                                <Form.Control
+                                    name="imagen"
+                                    onChange={(e) => handleChange(e)}
+                                    type="text"
+                                    placeholder="http://meme.jpg"
+                                    aria-describedby="inputGroupPrepend"
+                                    required
+                                />
+                            </InputGroup>
+                        </Form.Group>
+                        <Row></Row>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button type="button" variant="secondary" onClick={handleClose}>
+                            Cerrar
+                        </Button>
+                        <Button type="submit" className="" disabled={isLoading}>
+                            Guardar Cambios
+                            {isLoading && (
+                                <Spinner animation="border" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </Spinner>
+                            )}
+                        </Button>
+                    </Modal.Footer>
+                </Form>
+            </Modal>
         </div>
     );
 }
