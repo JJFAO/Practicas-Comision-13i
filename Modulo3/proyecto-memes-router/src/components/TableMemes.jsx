@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { Button, Form, InputGroup, Modal, Row, Spinner, Table } from 'react-bootstrap';
 import { leerDeLocalStorage } from '../utils/localStorage';
+import ModalEditMeme from './ModalEditMeme';
 
 export default function TableMemes(props) {
     const [isLoading, setIsLoading] = useState(false);
@@ -21,11 +22,18 @@ export default function TableMemes(props) {
 
     const editMeme = (meme) => {
         setIsModal(true);
+        setCurrentMeme(meme);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmitEdit = async (e) => {
+        setIsLoading(true);
         e.preventDefault();
-        console.log('submit', currentMeme);
+        const tokenLocal = leerDeLocalStorage('token') || {};
+        const headers = { 'x-auth-token': tokenLocal.token };
+        await axios.put(`http://localhost:4000/api/memes/${currentMeme._id}`, currentMeme, { headers });
+        await props.actualizarMemes();
+        setIsLoading(false);
+        handleClose();
     };
 
     const handleChange = (event) => {
@@ -71,53 +79,15 @@ export default function TableMemes(props) {
                 </div>
             )}
 
-            <Modal show={isModal} onHide={handleClose}>
-                <Form onSubmit={handleSubmit}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Editar Meme</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="p-5">
-                        <Form.Group controlId="titulo">
-                            <Form.Label>Titulo</Form.Label>
-                            <Form.Control
-                                name="titulo"
-                                value={currentMeme.titulo}
-                                onChange={(e) => handleChange(e)}
-                                required
-                                type="text"
-                                placeholder="Meme"
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="imagen">
-                            <Form.Label>Imagen</Form.Label>
-                            <InputGroup hasValidation>
-                                <Form.Control
-                                    name="imagen"
-                                    onChange={(e) => handleChange(e)}
-                                    type="text"
-                                    placeholder="http://meme.jpg"
-                                    aria-describedby="inputGroupPrepend"
-                                    required
-                                />
-                            </InputGroup>
-                        </Form.Group>
-                        <Row></Row>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button type="button" variant="secondary" onClick={handleClose}>
-                            Cerrar
-                        </Button>
-                        <Button type="submit" className="" disabled={isLoading}>
-                            Guardar Cambios
-                            {isLoading && (
-                                <Spinner animation="border" role="status">
-                                    <span className="visually-hidden">Loading...</span>
-                                </Spinner>
-                            )}
-                        </Button>
-                    </Modal.Footer>
-                </Form>
-            </Modal>
+            <ModalEditMeme
+                isModal={isModal}
+                onClose={handleClose}
+                onSubmit={handleSubmitEdit}
+                titulo={currentMeme.titulo}
+                imagen={currentMeme.imagen}
+                onChange={handleChange}
+                isLoading={isLoading}
+            />
         </div>
     );
 }
