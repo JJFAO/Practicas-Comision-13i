@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Products from './components/Products';
@@ -7,15 +7,16 @@ import './App.css';
 import './animation.css';
 
 function App() {
+    const [carrito, setCarrito] = useState([]);
     return (
         <Router>
-            <Header />
+            <Header carrito={carrito} />
             <Switch>
                 <Route path="/cart">
-                    <Cart />
+                    <Cart carrito={carrito} />
                 </Route>
                 <Route exact path="/">
-                    <Products />
+                    <Products carrito={carrito} setCarrito={setCarrito} />
                 </Route>
             </Switch>
         </Router>
