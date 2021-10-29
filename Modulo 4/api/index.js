@@ -3,13 +3,14 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const morgan = require('morgan');
 const usuarioRoutes = require('./routes/usuariosRoutes');
 const memeRoutes = require('./routes/memesRoutes');
 const authRoutes = require('./routes/authRoutes');
 
 // crear el servidor
 const app = express();
-
+app.use(morgan('dev'));
 // Permitir acceso, cors
 app.use(cors());
 
