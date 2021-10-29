@@ -1,0 +1,29 @@
+.pulsating-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.pulsating-circle:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+    border-radius: 45px;
+}
+.pulsating-circle:hover:before {
+    background-color: #43e9019c;
+    animation: pulse-ring 1.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.13);
+    }
+    80%,
+    100% {
+        opacity: 0;
+    }
+}
