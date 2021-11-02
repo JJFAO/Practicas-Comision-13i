@@ -13,7 +13,7 @@ function App() {
             <Header carrito={carrito} />
             <Switch>
                 <Route path="/cart">
-                    <Cart carrito={carrito} />
+                    <Cart carrito={carrito} setCarrito={setCarrito} />
                 </Route>
                 <Route exact path="/">
                     <Products carrito={carrito} setCarrito={setCarrito} />
