@@ -4,7 +4,7 @@ export default function Product({ product, carrito, setCarrito }) {
     const [isInCart, setIsInCart] = useState(false);
 
     const addToCart = () => {
-        setCarrito((cart) => cart.concat({ product }));
+        setCarrito((cart) => cart.concat({ product, cantidad: 1 }));
     };
 
     useEffect(() => {
