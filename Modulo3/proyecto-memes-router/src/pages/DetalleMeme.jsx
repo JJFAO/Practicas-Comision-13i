@@ -1,16 +1,25 @@
-import { Redirect, useParams } from 'react-router';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import MemeFullScreen from '../components/MemeFullScreen';
-import { leerDeLocalStorage } from '../utils/localStorage';
 
 export default function DetalleMeme() {
     const { memeId } = useParams();
-    const memes = leerDeLocalStorage('memes') || [];
+    const [meme, setMeme] = useState({});
+    const history = useHistory();
 
-    const memeEncontrado = memes.find((m) => m.id === memeId);
+    useEffect(() => {
+        const getMeme = async () => {
+            try {
+                const response = await axios.get(`http://localhost:4000/api/memes/${memeId}`);
+                setMeme(response.data);
+            } catch (error) {
+                console.log(error);
+                history.push('/404');
+            }
+        };
+        getMeme();
+    }, []);
 
-    if (memeEncontrado === undefined) {
-        return <Redirect to="/404" />;
-    }
-
-    return <MemeFullScreen meme={memeEncontrado} />;
+    return <MemeFullScreen meme={meme} />;
 }

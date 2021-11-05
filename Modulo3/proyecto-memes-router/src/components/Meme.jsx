@@ -12,7 +12,7 @@ export default function Meme(props) {
                 {/* <span>{props.meme.publishedAt}</span> */}
                 {props.meme.creador && <span> Creador: {props.meme.creador?.name} </span>}
             </Card.Body>
-            <Button as={Link} to={`/meme/${props.meme.id}`}>
+            <Button as={Link} to={`/meme/${props.meme._id}`}>
                 Ver Detalle
             </Button>
         </Card>

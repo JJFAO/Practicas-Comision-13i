@@ -1,5 +1,5 @@
 import { Container, Spinner } from 'react-bootstrap';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
@@ -24,10 +24,16 @@ function App() {
         setIsLoading(true);
         const tokenLocal = leerDeLocalStorage('token') || {};
 
+        try {
         if (tokenLocal.token) {
             const headers = { 'x-auth-token': tokenLocal.token };
             const response = await axios.get('http://localhost:4000/api/auth', { headers });
             setUser(response.data);
+        }
+        } catch (error) {
+            console.error(error);
+            localStorage.removeItem('token');
+            window.location.href = '/';
         }
         setIsLoading(false);
     };
@@ -92,7 +98,10 @@ function App() {
                         <Register />
                     </Route>
 
-                    <Route path="/404">404</Route>
+                    <Route path="/404">
+                        <h2>404 Recurso no encontrado</h2>
+                        <Link to="/">Volver al inicio</Link>
+                    </Route>
 
                     <Route path="*">
                         <Redirect to="/404" />
